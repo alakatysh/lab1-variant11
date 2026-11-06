@@ -1,0 +1,248 @@
+:root {
+  --bg-color: #0f172a;
+  --panel-bg: #1e293b;
+  --card-bg: #334155;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --accent-blue: #38bdf8;
+  --accent-orange: #fb923c;
+  --accent-green: #4ade80;
+  --accent-purple: #c084fc;
+  --border-color: #475569;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  min-height: 100vh;
+  padding: 16px;
+}
+
+.app-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.app-header h1 {
+  font-size: 1.6rem;
+  color: var(--accent-blue);
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+/* Панель керування */
+.controls-panel {
+  background-color: var(--panel-bg);
+  padding: 16px;
+  border-radius: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  border: 1px solid var(--border-color);
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.control-group label {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.btn-group {
+  display: flex;
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  padding: 3px;
+  gap: 4px;
+}
+
+.btn {
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn.active {
+  background-color: var(--accent-blue);
+  color: #000;
+  font-weight: bold;
+}
+
+.select-input {
+  background-color: var(--card-bg);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  outline: none;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.btn-action {
+  background-color: var(--accent-orange);
+  color: #000;
+  font-weight: bold;
+}
+
+.btn-action:hover {
+  background-color: #f97316;
+}
+
+.btn-secondary {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+}
+
+/* Адаптивна основна область */
+.main-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  width: 100%;
+}
+
+.canvas-wrapper {
+  flex: 1 1 600px;
+  min-width: 300px;
+  position: relative;
+  background-color: var(--panel-bg);
+  border-radius: 12px;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+canvas {
+  background-color: #0f172a;
+  border-radius: 8px;
+  display: block;
+  width: 100%;
+  height: 480px;
+}
+
+.tooltip {
+  position: absolute;
+  background-color: rgba(15, 23, 42, 0.95);
+  border: 1px solid var(--accent-blue);
+  color: var(--text-main);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  z-index: 10;
+}
+
+.tooltip.hidden {
+  display: none;
+}
+
+/* Панель метрик */
+.metrics-panel {
+  flex: 0 0 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (max-width: 920px) {
+  .metrics-panel {
+    flex: 1 1 100%;
+  }
+  .action-buttons {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+.metric-card {
+  background-color: var(--panel-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.metric-card h3 {
+  font-size: 0.9rem;
+  color: var(--accent-blue);
+  margin-bottom: 8px;
+}
+
+.legend-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.85rem;
+}
+
+.legend-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend-color {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.color-points { background-color: #38bdf8; }
+.color-lagrange { background-color: #c084fc; }
+.color-lsm { background-color: #4ade80; }
+.color-residuals { background-color: #fb923c; }
+
+.code-block {
+  background-color: #0f172a;
+  padding: 8px;
+  border-radius: 6px;
+  font-family: monospace;
+  font-size: 0.82rem;
+  color: var(--accent-green);
+  word-break: break-all;
+}
+
+.status-text {
+  font-size: 0.85rem;
+  color: var(--accent-orange);
+  font-weight: 500;
+}

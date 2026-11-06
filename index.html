@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ЛР1: Апроксимація та Інтерполяція (Варіант 11)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <h1>Лабораторна робота №1: Апроксимація функцій</h1>
+      <p class="subtitle">Інтерполяційний поліном Лагранжа та Метод Найменших Квадратів (Варіант 11)</p>
+    </header>
+
+    <div class="controls-panel">
+      <!-- Перемикач датасетів -->
+      <div class="control-group">
+        <label>Набір точок:</label>
+        <div class="btn-group" id="dataset-toggle">
+          <button class="btn active" data-dataset="ds5">5 точок</button>
+          <button class="btn" data-dataset="ds10">10 точок</button>
+          <button class="btn" data-dataset="ds20">20 точок</button>
+        </div>
+      </div>
+
+      <!-- Перемикач режимів візуалізації -->
+      <div class="control-group">
+        <label>Режим відображення:</label>
+        <div class="btn-group" id="view-toggle">
+          <button class="btn active" data-view="all">Усі графіки</button>
+          <button class="btn" data-view="lagrange">Лише Лагранж</button>
+          <button class="btn" data-view="lsm">Лише МНК</button>
+        </div>
+      </div>
+
+      <!-- Вибір степеня полінома МНК -->
+      <div class="control-group">
+        <label for="degree-select">Степінь МНК (m):</label>
+        <select id="degree-select" class="select-input">
+          <option value="1">1 (Лінійна)</option>
+          <option value="2" selected>2 (Квадратична)</option>
+          <option value="3">3 (Кубічна)</option>
+        </select>
+      </div>
+
+      <!-- Кнопки анімації -->
+      <div class="control-group action-buttons">
+        <button id="btn-anim-lagrange" class="btn btn-action">Анімація Лагранжа</button>
+        <button id="btn-anim-lsm" class="btn btn-action">Анімація МНК</button>
+        <button id="btn-reset" class="btn btn-secondary">Скинути</button>
+      </div>
+    </div>
+
+    <!-- Основна область візуалізації -->
+    <main class="main-content">
+      <div class="canvas-wrapper">
+        <canvas id="chart-canvas"></canvas>
+        <div id="tooltip" class="tooltip hidden"></div>
+      </div>
+
+      <!-- Панель метрик та аналізу -->
+      <aside class="metrics-panel">
+        <div class="metric-card">
+          <h3>Легенда</h3>
+          <ul class="legend-list">
+            <li><span class="legend-color color-points"></span> Вузли / Точки</li>
+            <li><span class="legend-color color-lagrange"></span> Поліном Лагранжа</li>
+            <li><span class="legend-color color-lsm"></span> Апроксимація МНК</li>
+            <li><span class="legend-color color-residuals"></span> Залишки r_i (МНК)</li>
+          </ul>
+        </div>
+
+        <div class="metric-card">
+          <h3>Рівняння МНК</h3>
+          <div id="lsm-equation" class="code-block">y = ...</div>
+        </div>
+
+        <div class="metric-card">
+          <h3>Похибки (МНК)</h3>
+          <p><strong>RMSE:</strong> <span id="metric-rmse">0.0000</span></p>
+          <p><strong>MAE:</strong> <span id="metric-mae">0.0000</span></p>
+        </div>
+
+        <div class="metric-card">
+          <h3>Стан анімації</h3>
+          <p id="anim-status" class="status-text">Готовий до роботи</p>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <!-- Підключення скриптів у правильному порядку -->
+  <script src="js/datasets.js"></script>
+  <script src="js/math.js"></script>
+  <script src="js/canvas.js"></script>
+  <script src="js/animation.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
